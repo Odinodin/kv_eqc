@@ -32,12 +32,11 @@ insert(K,V,leaf) ->
   {node,leaf,K,V,leaf};
 insert(K,V,{node,L,KN,VN,R}) ->
   if K<KN ->
-      {node, insert(K,V,L), KN, VN, R}
+      {node, insert(K,V,L), KN, VN, R};
      K==KN ->
       {node,L,K,V,R};
      K>KN ->
-      {node,L, KN, VN, insert(K,V,L)}
-      insert(K,V,R)
+      {node,L, KN, VN, insert(K,V,R)};
   end.
 
 lookup(_,leaf) ->
